@@ -22,7 +22,9 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about_us">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Laundry Service</a></li>
+                        <li><a href="#home">
+                            <button class="button" id="openService">Laundry Service</button>
+                        </a></a></li>
                         <li><a href="#home">
                             <button class="button" id="form_open">Login</button>
                         </a></li>
@@ -48,14 +50,15 @@
 
         <!--LOGIN-->
         <div class="form_container">
-                <i class='bx bx-x'></i> 
-                <!--login form-->
+            <i class='bx bx-x'></i> 
+            <!--login form-->
                 <div class = "form login_form">
                     <div class="logo_header">
                         <header>
                             <img src="/main/images/laundry-logo.png" alt="logo">      
                         </header>
-                        <p>Log in</p>
+                        <h2>Login</h2>
+                        <h5>Welcome back!</h5>
                     </div>
 
                     <form action="login_config.php" method="post">
@@ -72,15 +75,108 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                         </div>
-                        <div class="links" style="margin-top: 5px;">
+                        <div class="links">
                             <span><a href="forgot_password.php">Forgot Password? </a></span>
-                        </div>
-                            
+                        </div>                            
                             <div class="input-box">
                                 <input type="submit" class="btn" value="Login">
                             </div>
                     </form>
                 </div>
+        </div>
+
+        <!--POP UP LAUNDRY SERVICE FORM-->
+        <div class="service_form" id="service_form">
+            <form action="patient_config.php" method="post" class="form-container" id="form_id">
+                <div class="logo_header">
+                    <header>
+                        <img src="/main/images/laundry-logo.png" alt="logo">      
+                    </header>
+                    <h3 class="text-center">Laundry Service</h3>
+                    <button type="button" class="btnClose" onclick="closeForm()"><i class='bx bx-x bx-rotate-90'></i></button>
+                </div>
+                <div class="line"></div>
+
+                <div class="row">
+                    <h4 class="text-center">Customer Details</h4>
+                    <div class="col">
+                        <label for="form-label"><b>Customer Name</b></label>
+                        <input type="text" class="form-control" id="input" name="customer_name"
+                            placeholder="Enter customer name" autocomplete="off" required>
+                    </div>
+
+                    <div class="col">
+                        <label for="form-label"><b>Customer Number</b></label>
+                        <input type="number" class="form-control" id="input" name="customer_number"
+                            placeholder="Enter customer number" autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h4 class="text-center">Laundry Information</h4>
+                    <div class="col">
+                        <label for="form-label"><b>Quantity</b></label>
+                        <select name="quantity" class="form-control">
+                            <option value="">--Select Quantity--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="form-label"><b>Laundry Service</b></label>
+                        <select name="service" class="form-control">
+                            <option value="">--Select Service--</option>
+                            <option value="Wash/Dry/Press">Wash/Dry/Press</option>
+                            <option value="Wash/Dry/Fold">Wash/Dry/Fold</option>
+                            <option value="Dry only">Dry only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="form-label"><b>Laundry Category</b></label>
+                        <select name="category" class="form-control">
+                            <option value="">--Select Category--</option>
+                            <option value="Clothes, Table Napkin, Pillowcase">Clothes, Table Napkin, Pillowcase</option>
+                            <option value="Bedsheet/Table cloths/Curtain">Bedsheet/Table cloths/Curtain</option>
+                            <option value="Comforter, bath towel">Comforter, bath towel</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="form-label"><b>Weight(kg)</b></label>
+                        <input type="number" class="form-control" id="input" name="weight" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="form-label"><b>Price</b></label>
+                        <input type="number" class="form-control" id="input" name="price" placeholder="Enter price"
+                            autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn btn-success" name="btnSubmit">Add to list</button>
+                    <button type="button" class="btn btn-secondary">Done</button>
+                </div>
+        </div>
+
     </section>
 
     <!--ABOUT US-->
@@ -186,12 +282,13 @@
     <!--footer-->
     <footer>
         <div class="footer-container" id="contact">
-
             <div class="footer-section">
                 <div class="business_name">
                     <h1>AZIA SKYE'S LAUNDRY SHOP</h1>
                 </div>
-                <br>
+            </div>
+
+            <div class="footer-section">
                 <h2>BUSINESS HOURS</h2>
                 <p><strong>MONDAY TO SUNDAY</strong> <br> 8:00 AM - 6:00 PM</p>
             </div>
@@ -202,12 +299,12 @@
                     <i class='bx bxs-phone-call'></i>
                     <p>0995-062-8516 <br> 0991-370-9729</p>
                 </div>
-
             </div>
 
             <div class="footer-section">
                 <h2>OUR LOCATION</h2>
                 <div class="map-container">
+                    <h5>Verde Heights, City of San Jose del Monte, Bulacan</h5>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15429.758101734158!2d121.0463696!3d14.8005702!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397afa59f7a236b%3A0xeedc8d815ddd4067!2sBrent%20Erwin!5e0!3m2!1sen!2sph!4v1717215267505!5m2!1sen!2sph"
                         width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
@@ -216,62 +313,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        //BURGER MENU
-        document.addEventListener('DOMContentLoaded', () => {
-            const burger = document.querySelector('.burger');
-            const navLinks = document.querySelector('.nav-links');
-            const links = navLinks.querySelectorAll('a'); // Select all the links inside navLinks
-
-            burger.addEventListener('click', () => {
-                navLinks.classList.toggle('nav-active');
-                burger.classList.toggle('toggle');
-            });
-
-            // Add event listeners to each nav link to close the navigation container when clicked
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('nav-active');
-                    burger.classList.remove('toggle');
-                });
-            });
-        });
-
-        //scrolling effect
-        window.addEventListener('scroll', () => {
-            const scroll = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-            const scaleValue = 0.5 + (scroll * 0.5); // Scale from 0.5 to 1 based on scroll position
-            document.body.style.setProperty('--scale', scaleValue);
-        }, false);
-
-        //POP-UP LOGIN FORM
-        const openForm = document.querySelector("#form_open"),
-            home = document.querySelector(".home"),
-            formContainer = document.querySelector(".form_container"),
-            formClose = document.querySelector(".bx-x"),
-            signUp = document.querySelector("#signup"),
-            logIn = document.querySelector("#login");
-
-            openForm.addEventListener("click", () => home.classList.add("show"))
-            formClose.addEventListener("click", () => home.classList.remove("show"))
-
-            signUp.addEventListener("click", (e) => {
-                e.preventDefault();
-                formContainer.classList.add("active");
-            });
-
-            logIn.addEventListener("click", (e) => {
-                e.preventDefault();
-                formContainer.classList.remove("active");
-            });
-
-            //scroll
-            window.addEventListener('scroll', () => {
-                document.body.style.setProperty('--scroll',window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-            }, false);
-
-    </script>
 </body>
-
+    <script src="homepage.js"></script>
 </html>
