@@ -166,11 +166,9 @@ document.getElementById('btnCancel_service').addEventListener('click', function(
     }).then((result) => {
         if (result.isConfirmed) {
             //service overview
-            const service_overview = document.getElementById('overview');
-            const overview_container = document.getElementById('overview_container');
-            
-            service_overview.reset();
-            overview_container.style.display = 'none';
+            const service_overview = document.getElementById('service_overview');
+            document.getElementsByClassName('mb-4').innerText = '';
+            service_overview.style.display = 'none';
         }
     });
 });
@@ -206,13 +204,63 @@ document.getElementById('btnCancel_service_details').addEventListener('click', f
         cancelButtonText: 'No',
     }).then((result) => {
         if (result.isConfirmed) {
-            //service details 
-            const service_form_details = document.getElementById('service_req_container');
-            const service_details = document.getElementById('service_details');
-
-            service_form_details.reset();
-            service_details.style.display = 'none'; 
+            //service details
+            const clearElements = document.querySelectorAll('.form-control');
+            clearElements.forEach(element => {
+                element.value = element.defaultValue;
+            });
+            document.getElementById('service_details').style.display = 'none'; 
            
         }
     });
 });
+
+/*document.getElementById('btnDone_service').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const print_invoice = document.getElementById('print_invoice');
+    const service_details = document.getElementById('service_details');
+
+    service_details.style.display = 'none';
+    print_invoice.style.display = 'block';
+});*/
+
+//PRINT INVOICE
+document.getElementById('btnDone_service').addEventListener('click', function(event) {
+    event.preventDefault();
+    Swal.fire({
+        title: "Do you want to have a copy of the invoice?",
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            printInvoice('print_invoice');  
+        }
+    });
+});
+
+function printInvoice(divId) {
+    var content = document.getElementById(divId).innerHTML;
+    var printWindow = window.open('', '', 'height=400,width=600');
+    printWindow.document.write('<html><head><title>Print Invoice</title>');
+    printWindow.document.write('<style>');
+    printWindow.document.write('body{ font-size: 12px; width: 80mm; }'); /* Adjust font size and width */
+    printWindow.document.write('.text-center { text-align: center; }');
+    printWindow.document.write('.mt-4, .mt-2, .mb-4 { margin-top: .5rem; margin-bottom: .5rem; }');
+    printWindow.document.write('.table { width: 100%; border-collapse: collapse; }');
+    printWindow.document.write('.table, .table th, .table td { border: 1px solid black; }');
+    printWindow.document.write('.table th, .table td { padding: 5px; text-align: left; }');
+    printWindow.document.write('.logo_header img { width: 100px; height: auto; display: block; margin: 0 auto; }');
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(content);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+}
+
+
+

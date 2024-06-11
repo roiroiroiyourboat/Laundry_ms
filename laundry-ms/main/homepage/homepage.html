@@ -195,8 +195,15 @@
                             </div>-->
                     <h5 class="text-center">Customer No. : </h5>
                         <div class="mb-4">
-                            <h5>Customer Name : </h5>
-                            <h5>Contact Number : </h5>
+                            <div class="row">
+                                <div class="col">
+                                     <h5>Customer Name : </h5>
+                                </div>
+
+                                <div class="col">
+                                    <h5>Contact Number : </h5>
+                                </div>
+                            </div> 
                         </div>
                         
                         <div class="table-responsive">
@@ -266,6 +273,13 @@
                     </div>
 
                     <div class="row">
+                        <div class="col">
+                            <label for="form-label"><b>Pickup/Delivery Date</b></label>
+                            <input type="date" class="form-control" id="pickupDate" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <h4 class="text-center">Charges</h4>
                         <div class="col">
                             <label for="form-label"><b>Total Amount</b></label>
@@ -296,11 +310,66 @@
 
                     <div class="buttons">
                         <button type="button" class="btn btn-danger" id="btnCancel_service_details">Cancel</button>
-                        <button type="submit" class="btn btn-success" id="btnDone">Done</button>
+                        <button type="submit" class="btn btn-success" id="btnDone_service">Done</button>
                     </div>
                 </form>
             </div>
         </div> <!--END OF SERVICE DETAILS-->
+
+        <!-------INVOICE-------->
+        <div class="print_invoice" id="print_invoice">
+            <div class="invoice_container" id="invoice_container">
+                <div class="logo_header">
+                    <header>
+                        <img src="/main/images/laundry-logo.png" alt="logo">      
+                    </header>
+                    <h4 class="text-center">Azia Skye's Laundry</h4>
+                    <h6 class="text-center">Verde Height, City of San Jose del Monte, Bulacan</h6>
+                    <h6 class="text-center">0995-062-8516 / 0991-370-9729</h6>
+                </div>
+                <hr style="border: 1px solid #000000; margin: 18px 0;">
+                
+            <div id="invoice-details" class="mb-4">
+                <h6>Customer No: 0001</h6>
+
+                <div class="row">
+                    <div class="col">
+                         <h6>Name: RD</h6>
+                    </div>
+
+                    <div class="col">
+                        <h6>Date: </h6>
+                    </div>
+                </div>
+
+                <h6>Contact Number: 09123456789</h6>
+                <h6>Address: Dyan sa tabi tabi</h6>
+                <h6>Pickup/Delivery Date: 14/06/2024</h6>
+
+                <h4 class="mt-4">Service Details</h4>
+                <table class="table table-bordered" id="services-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wash/Dry/Press</td>
+                            <td>1</td>
+                            <td>35</td>
+                            <td>175</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 class="mt-2">Delivery Fee: ₱<span id="deliveryFee">50.00</span></h5>
+                <h5 class="mt-2">Total Amount: ₱<span id="totalAmount">225</span></h5>
+            </div>
+        </div>
+
     </section>
 
     <!--ABOUT US-->

@@ -664,13 +664,6 @@ footer > * {
     border-radius: 28px;
 }
 
-.overview_container .mb-4 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 16px;
-}
-
 .overview_container img {
     width: 50px;
     height: 50px;
@@ -756,3 +749,97 @@ footer > * {
 }
 
 /*INVOICE*/
+.print_invoice {
+    display: none;
+    position: absolute;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+}
+
+.invoice_container {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Default width for smaller screens */
+    max-width: 600px; /* Maximum width for larger screens */
+}
+
+#services-table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.print_invoice .logo_header header {
+    display: flex;
+    justify-content: center;
+}
+
+.print_invoice .logo_header img {
+    width: 50px;
+    height: 50px;
+}
+
+.print_invoice .logo_header h4 {
+    margin-bottom: 10px;
+}
+
+/* Styles for printing */
+@media print {
+    .print_invoice {
+        display: block;
+        position: static;
+        background-color: transparent;
+        padding-top: 0;
+    }
+
+    .invoice_container {
+        margin: 0;
+        padding: 0;
+        border: none;
+        width: 100%; /* Ensure it fits the thermal printer paper */
+        max-width: none;
+    }
+
+    body {
+        font-size: 12px; /* Adjust font size for thermal printer */
+        width: 80mm; /* Width of the thermal printer paper */
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .mt-4, .mt-2, .mb-4 {
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table, .table th, .table td {
+        border: 1px solid black;
+    }
+
+    .table th, .table td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    .logo_header img {
+        width: 100px; /* Adjust size as needed */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+}
