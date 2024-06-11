@@ -154,7 +154,7 @@ html {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Home Section */
+/*HOME*/
 .home {
     position: relative;
     background: url('/main/images/waves_bg.svg') no-repeat;
@@ -258,8 +258,8 @@ html {
     margin-top: 16px;
 }
 
-.aboutUs-content h2 {
-    font-size: 1rem;
+.aboutUs-content h3 {
+    font-size: 1.5rem;
     color: #fff;
 }
 
@@ -281,7 +281,7 @@ html {
 .card {
     width: 250px;
     background: rgba(255, 255, 254, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1px);
     border: 1px solid rgba(255, 255, 254, 0.25);
     border-radius: 8px;
     overflow: hidden;
@@ -341,14 +341,14 @@ html {
     transition: transform 0.5s linear;
 }
 
-.card-content h3 {
+.card-content h3, .card-content h4 {
     font-size: 28px;
     margin-bottom: 8px;
     color: #232946;
     text-align: center;
 }
 
-/* Footer */
+/*FOOTER*/
 footer {
     position: relative;
     width: 100%;
@@ -426,7 +426,6 @@ footer > * {
     height: 200px;
 }
 
-/* Footer Responsiveness */
 @media (min-width: 768px) {
     .footer-container {
         flex-direction: row;
@@ -449,60 +448,27 @@ footer > * {
     }
 }
 
-/* Login Form */
-.home::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.home.show::before {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.form_container.active .login_form {
-    display: none;
-}
-
+/*LOGIN FORM*/
 .form_container {
-    margin-top: 30px;
+    display: none;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2);
-    z-index: 101;
+    z-index: 1; /*below nav bar*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /*enable scrolling in form*/
+    background-color: rgba(0, 0, 0, 0.7); /*black background with opacity*/
+    padding-top: 60px;
+}
+
+.login_form {
     background: #fff;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.4s ease-out;
-    width: 90%;
-    max-width: 400px;
-    padding: 35px;
-    border-radius: 30px;
-    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1),
-                -2px -0px 15px 2px rgba(0, 0, 0, 0.1);
-}
-
-.home.show .form_container {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: auto;
-}
-
-.bx-x {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: black;
-    font-size: 30px;
-    opacity: 0.7;
-    cursor: pointer;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #4d4d4d;
+    width: 30%;
+    border-radius: 28px;
 }
 
 .logo_header header {
@@ -517,14 +483,6 @@ footer > * {
 
 .logo_header h5 {
     margin-bottom: 10px;
-}
-
-.form_container .form-control {
-    height: 40px;
-    border: 2px solid gray;
-    border-radius: 7px;
-    margin: 5px 0;
-    outline: none;
 }
 
 .form_container .input-box {
@@ -561,29 +519,40 @@ footer > * {
     cursor: pointer;
 }
 
-@media (max-width: 480px) {
-    .form_container {
-        width: 90%;
-        padding: 15px;
-        transform: translate(-50%, -50%) scale(1);
+.form_container > * {
+    position: relative;
+    z-index: 1002;
+}
+
+@media (max-width: 768px) {
+    .login_form {
+        width: 60%;
+        padding: 25px;
     }
 
-    .logo_header p {
-        font-size: 20px;
-    }
-
-    .bx-rotate-90 {
-        font-size: 20px;
-        top: 5px;
-        right: 10px;
-    }
-
-    input {
+    .logo_header img {
+        width: 40px;
         height: 40px;
-        border-width: 2px;
     }
 
-    .btn {
+    .form_container .btn {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login_form {
+        width: 90%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+
+    .logo_header img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .form_container .btn {
         padding: 8px;
     }
 }
@@ -591,13 +560,14 @@ footer > * {
 /*POP UP LAUNDRY FORM*/
 .service_form {
     display: none;
-    position: fixed;
+    position: absolute;
     z-index: 1; /*below nav bar*/
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto; /*enable scrolling in form*/
+    background-color: rgba(0, 0, 0, 0.7); /*black background with opacity*/
     padding-top: 60px;
 }
 
@@ -610,19 +580,7 @@ footer > * {
     border-radius: 28px;
 }
 
-/*for darken the background once you clicked the service form*/
-.service_form::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-}
-
-.service_form .footer-container img {
+.service_form .form-container img {
     width: 50px;
     height: 50px;
 }
@@ -666,7 +624,6 @@ footer > * {
     border-radius: 18px;
 }
 
-/*above*/
 .service_form > * {
     position: relative;
     z-index: 1002;
@@ -683,3 +640,119 @@ footer > * {
         width: 95%;
     }
 }
+
+/*OVERVIEW PANEL*/
+.service_overview {
+    display: none;
+    position: absolute;
+    z-index: 1; /*below nav bar*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /*enable scrolling in form*/
+    background-color: rgba(0, 0, 0, 0.7); /*black background with opacity*/
+    padding-top: 60px;
+}
+
+.overview_container{
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%;
+    border-radius: 28px;
+}
+
+.overview_container .mb-4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.overview_container img {
+    width: 50px;
+    height: 50px;
+}
+
+.overview_container > * {
+    position: relative;
+    z-index: 1002;
+}
+
+.overview_container button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 18px;
+}
+
+@media (max-width: 768px) {
+    .overview_container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .overview_container {
+        width: 95%;
+    }
+}
+
+/*SERVICE DETAILS*/
+.service_details {
+    display: none;
+    position: absolute;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+}
+
+.service_req_container{
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 45%;
+    border-radius: 28px;
+}
+
+.service_req_container .row {
+    margin: 10px 0;
+}
+
+.service_req_container .col {
+    margin-bottom: 10px;
+}
+
+.service_details button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 18px;
+}
+
+.service_details > * {
+    position: relative;
+    z-index: 1002;
+}
+
+@media (max-width: 768px) {
+    .service_req_container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .service_req_container {
+        width: 95%;
+    }
+}
+
+/*INVOICE*/

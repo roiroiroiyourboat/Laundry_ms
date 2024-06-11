@@ -51,7 +51,7 @@ html {
     transition: margin-left 0.5s ease;
 }
 
-.sidebar.active ~ .main-content {
+.sidebar.active ~ .main-content{
     margin-left: 260px;
     width: calc(100% - 260px);
     transition: all 0.5s ease;
